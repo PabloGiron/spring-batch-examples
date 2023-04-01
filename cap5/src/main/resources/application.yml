@@ -1,0 +1,23 @@
+server:
+  port: 9080
+spring:
+  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/spring_batch
+#    username: root
+#    password: root
+    url: ${db.url:jdbc:mysql://localhost:3306/spring_batch}
+    driverClassName: com.mysql.jdbc.Driver
+    username: ${db.username:root}
+    password: ${db.password:root}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  batch:
+    initialize-schema: always
